@@ -1,0 +1,412 @@
+/*----------------------------------------------------------- راهنمای کد استایل ها------------------------------------------------------------>
+                
+    
+                <!------------------------نام سکشن مربوطه----------------------شماره خط---------------------->
+    
+    
+                <!------------------------47-------------------------------منوی هدر----------------------->
+    
+                <!------------------------105-----------------------------------بنر----------------------->
+    
+                <!------------------------151-------------------------------محصولات---------------------->
+    
+                <!------------------------221-------------------------------درباره من---------------------->
+    
+                <!------------------------258--------------------------شبکه های اجتماعی---------------------->
+    
+                <!------------------------292------------------------------ارتباط با من---------------------->
+    
+                <!------------------------392-------------------------------متن کپی رایت----------------------*/
+
+
+html{
+    scroll-behavior : smooth;
+}
+
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+body
+{
+   font-family: iransans!important;
+    
+}
+
+
+
+.p-farsi{
+    font-size: 20px;
+}
+
+
+
+/*------------------------------------------------------------هدر سایت--------------------------------------*/
+
+
+
+
+#nav-bar
+{
+    position: sticky;
+    top: 0;
+    z-index: 10;   
+    box-shadow: 5px 5px 15px #9F6976;
+    
+}
+
+
+.navbar
+{
+    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    padding: 0 !important;
+}
+
+
+.navbar-brand img
+{
+    height: 40px;
+    padding-left: 20px;
+}
+
+.navbar-nav li
+{
+    padding: 0 10px;
+}
+
+
+.navbar-nav li a
+{
+    color: #fff !important;
+    font-weight: 600;
+    float:inherit;
+    text-align: center;
+  
+}
+
+
+.navbar-toggler
+{
+    outline: none !important;
+}
+
+
+.navbar-toggler-icon{
+    color: #fff;
+    font-size: 30px !important;
+}
+
+
+
+
+/*----------------------------بنر-------------------------------*/
+
+
+
+#banner
+{
+    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    color: #fff;
+    padding-top: 5%;
+}
+
+
+
+
+.banner_title
+{
+    
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 100px;
+    text-align: center;
+}
+
+
+#banner a
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.bottom-banner
+{
+    width: 100%;
+}
+
+
+.banner-shape
+{
+    border-radius: 2000px;
+    box-shadow: 5px 5px 30px #888888;
+    margin-top: 4rem;
+    
+}
+
+
+
+/*------------------------------------محصولات--------------------------------*/
+
+
+#products
+{
+    padding: 80px 0;
+}
+
+.service-img
+{
+    width: 90%;
+    margin-top: 20px;
+    border-radius:0.8rem;
+}
+
+
+.prices
+{
+    direction: rtl !important;
+    text-align: center;
+    
+}
+
+.services
+{
+    padding: 20px;
+    box-shadow: 3px 3px 20px #888888;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.services h4
+{
+    padding: 5px;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+
+.title::before
+{
+    content: '';
+    background:#9F6976;
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(63px);
+}
+
+
+
+
+.title::after
+{
+    content: '';
+    background:#9F6976;
+    height: 10px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
+
+
+
+
+/*----------------------------درباره من------------------------------*/
+
+
+
+
+#about-me
+{
+    background-color: #f8f9fa;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.about-title
+{
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 8%;
+    text-align: center;
+}
+
+
+#about-me ul li
+{
+    margin: 10 0;
+    list-style-type: none;
+}
+
+#about-me ul
+{
+    margin-left: 20px;
+}
+
+li{
+    direction: rtl;
+    text-align: center;
+}
+
+/*-------------------------------------شبکه های اجتماعی-------------------------------------------*/
+
+
+
+
+#social-media
+{
+    background: #f8f9fa;
+    padding: 100px 0;
+}
+
+
+#social-media p
+{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px; 
+}
+
+.social-icons img
+{
+    width: 60px;
+    transition: 0.5s;
+}
+
+.social-icons a:hover img
+{
+    transform: translateY(-10px);
+}
+
+
+
+
+
+/*----------------------------------------------ارتباط با من ---------------------------------------------*/
+
+
+
+
+#contact-me
+{
+    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    color: #fff;
+}
+
+
+.footer-img
+{
+    width: 100%;
+}
+
+
+.footer-box
+{
+    padding: 20px;
+    
+
+}
+
+
+.p-farsi-footer{
+    font-size: 16px;
+    direction: rtl;
+    text-align: center;
+}
+
+
+
+.contact-ways
+{
+    padding-left: 50px;
+}
+
+.footer-box img
+{
+    width: 120px;
+    margin-bottom: 20px;
+
+}
+
+.footer-box .contact-item
+{
+    margin-right: 8px;
+    font-size: 25px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding-top: 7px;
+    border-radius: 2px;
+    background-image: linear-gradient(to left , #432371,#FAAE7B);
+}
+
+
+.footer-box .form-control
+{
+    box-shadow: none !important;
+    border: none;
+    border-radius: 0;
+    margin-top: 25px;
+    max-width: 250px;
+    text-align: center;
+    border-radius: .8rem;
+}
+
+
+.footer-logo
+{
+margin-left: 35%;
+}
+
+.footer-box .btn-primary
+{
+    box-shadow: none !important;
+    border: none;
+    border-radius: 0;
+    margin-top: 30px;
+    background-image: linear-gradient(to left , #432371,#FAAE7B);
+}
+
+
+hr
+{
+    background-color: #F8F9FA;
+    
+}
+
+.sub-me{
+    margin-left: 85px;
+    
+    
+}
+
+#round{
+    border-radius: .5rem;
+}
+
+.text-sub
+{
+    margin-left: 30px;
+}
+
+.copyright
+{
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    text-align: center; 
+    width: 100%;
+}
+
+
+
+
