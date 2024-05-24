@@ -54,14 +54,14 @@ body
     position: sticky;
     top: 0;
     z-index: 10;   
-    box-shadow: 5px 5px 15px #9F6976;
+    box-shadow: 5px 5px 15px #53354A;
     
 }
 
 
 .navbar
 {
-    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    background-image: linear-gradient(to left , #2B2E4A,#E84545);
     padding: 0 !important;
 }
 
@@ -108,7 +108,7 @@ body
 
 #banner
 {
-    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    background-image: linear-gradient(to left , #2B2E4A,#E84545);
     color: #fff;
     padding-top: 5%;
 }
@@ -193,7 +193,7 @@ body
 .title::before
 {
     content: '';
-    background:#9F6976;
+    background:#53354A;
     height: 5px;
     width: 200px;
     margin-left: auto;
@@ -208,7 +208,7 @@ body
 .title::after
 {
     content: '';
-    background:#9F6976;
+    background:#53354A;
     height: 10px;
     width: 50px;
     margin-left: auto;
@@ -299,7 +299,7 @@ li{
 
 #contact-me
 {
-    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    background-image: linear-gradient(to left , #2B2E4A,#E84545);
     color: #fff;
 }
 
@@ -347,7 +347,7 @@ li{
     text-align: center;
     padding-top: 7px;
     border-radius: 2px;
-    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    background-image: linear-gradient(to left , #2B2E4A,#E84545);
 }
 
 
@@ -374,7 +374,7 @@ margin-left: 35%;
     border: none;
     border-radius: 0;
     margin-top: 30px;
-    background-image: linear-gradient(to left , #432371,#FAAE7B);
+    background-image: linear-gradient(to left , #2B2E4A,#E84545);
 }
 
 
