@@ -193,7 +193,7 @@ body
 .title::before
 {
     content: '';
-    background:#53354A;
+    background:#E84545;
     height: 5px;
     width: 200px;
     margin-left: auto;
@@ -208,7 +208,7 @@ body
 .title::after
 {
     content: '';
-    background:#53354A;
+    background:#E84545;
     height: 10px;
     width: 50px;
     margin-left: auto;
