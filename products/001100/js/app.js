@@ -105,7 +105,7 @@ recordBtn.onclick = async () => {
     return;
   }
 
-  let time = 120;
+  let time = 90;
   timerEl.style.display = "block";
   stopBtn.hidden = false;
 
@@ -188,4 +188,5 @@ retryBtn.onclick = () => {
 
   recordBtn.disabled = false;
   retryBtn.hidden = true;
+
 };
