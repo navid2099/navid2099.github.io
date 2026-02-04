@@ -1,1 +1,71 @@
-hi
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandera Tech</title>
+  
+
+  <!-- Persian Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.jpg" alt="Company Bandera Tech">
+  </div>
+
+  <!-- Title -->
+  <h1>
+    به شرکت <b>Bandera Tech</b> خوش آمدید<br>
+    لطفاً جهت ارسال رزومه فرم زیر را تکمیل نمایید
+  </h1>
+
+  <!-- Personal Info -->
+  <div class="card">
+    <label>نام</label>
+    <input id="fname">
+
+    <label>نام خانوادگی</label>
+    <input id="lname">
+
+    <label>شماره موبایل</label>
+    <input id="mobile" maxlength="11" placeholder="09xxxxxxxxx">
+  </div>
+
+  <!-- Video Section -->
+  <div class="card">
+    <label>ویدیو معرفی شما</label>
+
+    <div class="buttons">
+      <button class="outline" id="uploadBtn">آپلود ویدیو</button>
+      <button id="recordBtn">ضبط با دوربین</button>
+      <button id="stopBtn" class="danger" hidden>پایان ضبط</button>
+    </div>
+
+    <div class="timer" id="timer"></div>
+
+    <input type="file" id="videoInput" accept="video/mp4,video/webm,video/ogg" hidden>
+    <video id="preview" controls hidden></video>
+  </div>
+
+  <!-- Submit -->
+  <button id="submitBtn" class="submit_btn">ارسال رزومه</button>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Scripts -->
+<script src="js/app.js"></script>
+</body>
+</html>
