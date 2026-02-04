@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bandera Tech</title>
-  
 
-  <!-- Persian Font -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -18,19 +13,16 @@
 
 <div class="container">
 
-  <!-- Logo -->
   <div class="logo">
-    <img src="logo.jpg" alt="Company Bandera Tech">
+    <img src="logo.jpg" alt="Bandera Tech">
   </div>
 
-  <!-- Title -->
   <h1>
-    به شرکت <b>Bandera Tech</b> خوش آمدید<br>
-    لطفاً جهت ارسال رزومه فرم زیر را تکمیل نمایید
+    به شرکت <b>Bandera Tech</b> خوش آمدید
   </h1>
 
-  <!-- Personal Info -->
-  <div class="card">
+  <!-- ================= STEP 1 : FORM ================= -->
+  <div class="card" id="stepForm">
     <label>نام</label>
     <input id="fname">
 
@@ -39,33 +31,41 @@
 
     <label>شماره موبایل</label>
     <input id="mobile" maxlength="11" placeholder="09xxxxxxxxx">
+
+    <label>تخصص</label>
+    <input id="skill" placeholder="مثال: Frontend Developer">
+
+    <button id="nextBtn" class="submit_btn">بعدی</button>
   </div>
 
-  <!-- Video Section -->
-  <div class="card">
-    <label>ویدیو معرفی شما</label>
+  <!-- ================= STEP 2 : VIDEO ================= -->
+  <div class="card" id="stepVideo" hidden>
+    <p style="font-size:14px;line-height:1.8">
+      جهت تکمیل فرآیند ارسال رزومه، لطفاً ویدیو معرفی خود را ضبط و ارسال نمایید.
+    </p>
 
     <div class="buttons">
-      <button class="outline" id="uploadBtn">آپلود ویدیو</button>
-      <button id="recordBtn">ضبط با دوربین</button>
+      <button id="recordBtn">ضبط ویدیو</button>
       <button id="stopBtn" class="danger" hidden>پایان ضبط</button>
+      <button id="retryBtn" class="outline" hidden>ضبط مجدد</button>
     </div>
 
     <div class="timer" id="timer"></div>
-
-    <input type="file" id="videoInput" accept="video/mp4,video/webm,video/ogg" hidden>
     <video id="preview" controls hidden></video>
-  </div>
 
-  <!-- Submit -->
-  <button id="submitBtn" class="submit_btn">ارسال رزومه</button>
+    <button id="submitBtn" class="submit_btn" style="margin-top:16px">
+      ارسال رزومه
+    </button>
+  </div>
 
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- Scripts -->
 <script src="js/app.js"></script>
 </body>
 </html>
+
+
+
+
