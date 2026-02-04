@@ -1,6 +1,3 @@
-/* =========================
-   Global Styles
-========================= */
 :root {
   --border:#e5e5e5;
   --radius:14px;
@@ -23,9 +20,6 @@ body {
   padding:32px 20px;
 }
 
-/* =========================
-   Layout
-========================= */
 .logo {
   display:flex;
   justify-content:center;
@@ -34,7 +28,6 @@ body {
 
 .logo img {
   width:120px;
-  
 }
 
 h1 {
@@ -42,7 +35,7 @@ h1 {
   font-size:20px;
   line-height:1.9;
   margin-bottom:32px;
-  color: #10394A;
+  color:#10394A;
 }
 
 .card {
@@ -50,7 +43,7 @@ h1 {
   border-radius:var(--radius);
   padding:20px;
   margin-bottom:20px;
-  color: #10394A;
+  color:#10394A;
 }
 
 label {
@@ -71,13 +64,9 @@ input.error {
   border-color:var(--error);
 }
 
-/* =========================
-   Buttons
-========================= */
 .buttons {
   display:flex;
   gap:10px;
-  flex-wrap:wrap;
 }
 
 button {
@@ -90,19 +79,11 @@ button {
   cursor:pointer;
 }
 
-button.outline {
-  background:#FBFAF7;
-  color:#009fa3;
-}
-
 button.danger {
   background:#fb4e19;
   border-color:#fb4e19;
 }
 
-/* =========================
-   Video & Timer
-========================= */
 video {
   width:100%;
   margin-top:12px;
@@ -116,9 +97,6 @@ video {
   font-size:14px;
 }
 
-/* =========================
-   Toast
-========================= */
 .toast {
   position:fixed;
   bottom:24px;
@@ -138,8 +116,14 @@ video {
   opacity:1;
   transform:translateX(-50%) translateY(-10px);
 }
-.submit_btn{
-  width: 100%;
-  background-color: #10394A;
-  border-color: #10394A;
+
+.submit_btn {
+  width:100%;
+  background-color:#10394A;
+  border-color:#10394A;
+}
+
+button.outline {
+  background:#FBFAF7;
+  color:#009fa3;
 }
