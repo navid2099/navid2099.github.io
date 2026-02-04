@@ -188,5 +188,4 @@ retryBtn.onclick = () => {
 
   recordBtn.disabled = false;
   retryBtn.hidden = true;
-
 };
