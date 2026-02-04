@@ -1,135 +1,191 @@
 /* =========================
    Elements
 ========================= */
-const fname = document.getElementById("fname");
-const lname = document.getElementById("lname");
+const stepForm  = document.getElementById("stepForm");
+const stepVideo = document.getElementById("stepVideo");
+
+const fname  = document.getElementById("fname");
+const lname  = document.getElementById("lname");
 const mobile = document.getElementById("mobile");
+const skill  = document.getElementById("skill");
+
+const nextBtn   = document.getElementById("nextBtn");
 const submitBtn = document.getElementById("submitBtn");
 
-const uploadBtn = document.getElementById("uploadBtn");
 const recordBtn = document.getElementById("recordBtn");
-const stopBtn = document.getElementById("stopBtn");
+const stopBtn   = document.getElementById("stopBtn");
+const retryBtn  = document.getElementById("retryBtn");
 
-const videoInput = document.getElementById("videoInput");
 const preview = document.getElementById("preview");
 const timerEl = document.getElementById("timer");
-const toast = document.getElementById("toast");
+const toast   = document.getElementById("toast");
 
 /* =========================
    State
 ========================= */
 let mediaRecorder;
 let countdown;
+let videoBlob = null;
 let videoValid = false;
 
 /* =========================
-   Utilities
+   Utils
 ========================= */
 function showToast(msg){
   toast.textContent = msg;
   toast.classList.add("show");
-  setTimeout(()=>toast.classList.remove("show"),3000);
+  setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
 function clearError(input){
   input.classList.remove("error");
 }
 
+function isValidMobile(val){
+  return /^09\d{9}$/.test(val);
+}
+
 /* =========================
-   Validation (Empty only)
+   STEP 1 → STEP 2
 ========================= */
-submitBtn.onclick = () => {
+nextBtn.onclick = () => {
   let hasError = false;
 
-  [fname,lname,mobile].forEach(input=>{
-    if(!input.value){
+  [fname, lname, skill].forEach(input => {
+    if(!input.value.trim()){
       input.classList.add("error");
       hasError = true;
     }
   });
 
-  if(!videoValid){
-    hasError = true;
-    showToast("ارسال ویدیو الزامی است");
+  if(!isValidMobile(mobile.value)){
+    mobile.classList.add("error");
+    showToast("شماره موبایل معتبر نیست");
+    return;
   }
 
   if(hasError){
-    showToast("پر کردن این فیلد اجباری است");
+    showToast("لطفاً تمام فیلدها را کامل کنید");
     return;
   }
+
+  stepForm.hidden  = true;
+  stepVideo.hidden = false;
+};
+
+[fname, lname, mobile, skill].forEach(i => {
+  i.addEventListener("input", () => clearError(i));
+});
+
+/* =========================
+   Submit (Final)
+========================= */
+submitBtn.onclick = () => {
+  if(!videoValid){
+    showToast("ضبط ویدیو الزامی است");
+    return;
+  }
+
+  // داده‌ها آماده ارسال به بک‌اند:
+  // fname.value
+  // lname.value
+  // mobile.value
+  // skill.value
+  // videoBlob
 
   showToast("رزومه با موفقیت ارسال شد");
 };
 
-/* remove error on typing */
-[fname,lname,mobile].forEach(i=>{
-  i.addEventListener("input",()=>clearError(i));
-});
-
 /* =========================
-   Upload Video
-========================= */
-uploadBtn.onclick = () => videoInput.click();
-
-videoInput.onchange = () => {
-  const file = videoInput.files[0];
-  if(!file) return;
-
-  const v=document.createElement("video");
-  v.preload="metadata";
-  v.src=URL.createObjectURL(file);
-
-  v.onloadedmetadata=()=>{
-    if(v.duration > 120){
-      showToast("حداکثر زمان ویدیو ۲ دقیقه است");
-      return;
-    }
-    preview.src=v.src;
-    preview.hidden=false;
-    videoValid=true;
-  };
-};
-
-/* =========================
-   Record Video
+   Record Video (HIGH QUALITY AUDIO)
 ========================= */
 recordBtn.onclick = async () => {
-  let time = 120;
-  timerEl.style.display="block";
-  stopBtn.hidden=false;
+  if(videoValid){
+    showToast("برای ضبط مجدد ابتدا ویدیو را حذف کنید");
+    return;
+  }
 
-  const stream = await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+  let time = 120;
+  timerEl.style.display = "block";
+  stopBtn.hidden = false;
+
+  const stream = await navigator.mediaDevices.getUserMedia({
+    video: {
+      width: { ideal: 1280 },
+      height: { ideal: 720 },
+      frameRate: { ideal: 30 }
+    },
+    audio: {
+      echoCancellation: true,
+      noiseSuppression: true,
+      autoGainControl: true,
+      sampleRate: 44100,
+      channelCount: 1
+    }
+  });
+
   preview.srcObject = stream;
-  preview.hidden=false;
+  preview.muted = true;   // جلوگیری از بک‌خوردن صدا
+  preview.hidden = false;
   preview.play();
 
-  mediaRecorder = new MediaRecorder(stream);
-  let chunks=[];
+  mediaRecorder = new MediaRecorder(stream, {
+    mimeType: "video/webm;codecs=vp9,opus",
+    videoBitsPerSecond: 2_500_000, // 2.5 Mbps
+    audioBitsPerSecond: 128_000    // 128 kbps
+  });
 
-  mediaRecorder.ondataavailable=e=>chunks.push(e.data);
-  mediaRecorder.onstop=()=>{
+  let chunks = [];
+
+  mediaRecorder.ondataavailable = e => chunks.push(e.data);
+
+  mediaRecorder.onstop = () => {
     clearInterval(countdown);
-    timerEl.style.display="none";
-    stopBtn.hidden=true;
+    timerEl.style.display = "none";
+    stopBtn.hidden = true;
 
-    const blob=new Blob(chunks,{type:"video/webm"});
-    preview.srcObject=null;
-    preview.src=URL.createObjectURL(blob);
-    videoValid=true;
+    videoBlob = new Blob(chunks, { type: "video/webm" });
+    preview.srcObject = null;
+    preview.src = URL.createObjectURL(videoBlob);
+    preview.muted = false;
+
+    videoValid = true;
+    recordBtn.disabled = true;
+    retryBtn.hidden = false;
   };
 
   mediaRecorder.start();
 
-  countdown=setInterval(()=>{
+  countdown = setInterval(() => {
     time--;
-    timerEl.textContent=`⏱ زمان باقیمانده مجاز: ${String(Math.floor(time/60)).padStart(2,"0")}:${String(time%60).padStart(2,"0")}`;
-    if(time<=0) stopRecording(stream);
-  },1000);
+    timerEl.textContent =
+      `⏱ زمان باقی‌مانده: ${String(Math.floor(time / 60)).padStart(2,"0")}:${String(time % 60).padStart(2,"0")}`;
 
-  stopBtn.onclick = ()=> stopRecording(stream);
+    if(time <= 0){
+      stopRecording(stream);
+    }
+  }, 1000);
+
+  stopBtn.onclick = () => stopRecording(stream);
 };
 
 function stopRecording(stream){
-  mediaRecorder.stop();
-  stream.getTracks().forEach(t=>t.stop());
+  if(mediaRecorder && mediaRecorder.state !== "inactive"){
+    mediaRecorder.stop();
+  }
+  stream.getTracks().forEach(track => track.stop());
 }
+
+/* =========================
+   Retry Record
+========================= */
+retryBtn.onclick = () => {
+  preview.src = "";
+  preview.hidden = true;
+
+  videoBlob = null;
+  videoValid = false;
+
+  recordBtn.disabled = false;
+  retryBtn.hidden = true;
+};
